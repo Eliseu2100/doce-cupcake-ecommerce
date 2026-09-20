@@ -313,3 +313,48 @@ usar um cartão salvo em vez de digitar o número de novo: envie
 `"card_id": 3` no lugar de `card_number`/`card_name`/`expiry` (o CVV
 continua sendo obrigatório).
 
+desenhe os protótipos de tela (wireframes) 
+<div align="center">
+<img src="2730" height="1536" alt="Image" src="https://github.com/user-attachments/assets/d72035b8-b2d8-4758-acb9-53c1162bdc2e" width="1000px" />
+</div>
+
+Diagrama UML
+```mermaid
+---
+config:
+  layout: elk
+---
+classDiagram
+    class Categoria {
+        +Int id
+        +String nome
+    }
+
+    class Produto {
+        +Int id
+        +String nome
+        +String descricao
+        +Double preco
+        +Int categoria_id
+    }
+
+    class Pedido {
+        +Int id
+        +String cliente_nome
+        +String endereco
+        +Double total
+        +String status
+    }
+
+    class Itens_Pedido {
+        +Int pedido_id
+        +Int produto_id
+        +Int quantidade
+        +Double preco_unitario
+    }
+
+    Categoria "1" -- "*" Produto : Contém
+    Pedido "*" -- "*" Produto : Possui (via Itens_Pedido)
+
+```
+
