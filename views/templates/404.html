@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página não encontrada — Doce Cupcake</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+  .error-page{
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:32px;
+  }
+  .error-page svg{ width:120px; margin-bottom:24px; }
+  .error-page h1{ font-size:clamp(32px,5vw,52px); }
+  .error-page p{ color:var(--cocoa-soft); margin:14px 0 28px; font-size:16px; max-width:420px; }
+</style>
+</head>
+<body>
+  <div class="error-page">
+    <svg viewBox="0 0 300 320" fill="none">
+      <path d="M70 150 L230 150 L212 290 Q209 306 193 306 L107 306 Q91 306 88 290 Z" fill="#FBEBD3"/>
+      <path d="M60 150 C40 110 60 70 100 55 C120 47 130 30 150 30 C170 30 180 47 200 55 C240 70 260 110 240 150 C230 168 210 172 195 156 C182 142 170 118 150 118 C130 118 118 142 105 156 C90 172 70 168 60 150 Z" fill="#D6336C" opacity="0.5"/>
+      <circle cx="150" cy="42" r="13" fill="#9C1F52" opacity="0.5"/>
+    </svg>
+    <h1>Ops, esse cupcake sumiu!</h1>
+    <p>A página que você procurou não existe ou foi movida. Que tal voltar pro cardápio?</p>
+    <a href="/" class="btn btn-cherry">Voltar para a loja</a>
+  </div>
+</body>
+</html>

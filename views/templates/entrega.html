@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include "partials/seo_head.html" %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/entrega.css') }}">
+</head>
+<body class="payment-body">
+
+<header class="payment-header">
+  <div class="wrap nav-row">
+    <a href="{{ url_for('main.home') }}" class="brand">
+      <svg viewBox="0 0 64 64" fill="none">
+        <path d="M14 30 L50 30 L45 56 Q44 60 40 60 L24 60 Q20 60 19 56 Z" fill="#F4B740"/>
+        <path d="M12 30 C12 18 20 10 32 10 C44 10 52 18 52 30 C52 34 48 36 44 33 C40 30 38 24 32 24 C26 24 24 30 20 33 C16 36 12 34 12 30 Z" fill="#D6336C"/>
+        <circle cx="32" cy="14" r="4.5" fill="#9C1F52"/>
+      </svg>
+      Doce Cupcake
+    </a>
+    <a href="{{ url_for('main.home') }}" class="btn btn-outline btn-sm">← Voltar à loja</a>
+  </div>
+</header>
+
+<main class="wrap payment-wrap">
+
+  <div class="checkout-progress">
+    <span class="progress-step done">1. Carrinho</span>
+    <span class="progress-arrow">→</span>
+    <span class="progress-step active">2. Entrega</span>
+    <span class="progress-arrow">→</span>
+    <span class="progress-step">3. Pagamento</span>
+  </div>
+
+  <div id="entregaLoading" class="payment-loading">Carregando…</div>
+
+  <div id="entregaContent" class="payment-grid" hidden>
+
+    <section class="payment-form-col">
+      <h1>Entrega</h1>
+      <p class="payment-lead">Escolha para onde enviar seu pedido e um telefone de contato.</p>
+
+      <div id="addressList" class="address-list"></div>
+
+      <button type="button" id="showNewAddressBtn" class="btn btn-outline" style="margin-top:6px;">+ Adicionar novo endereço</button>
+
+      <form id="newAddressForm" class="payment-form" hidden style="margin-top:18px;">
+        <h3 style="margin-bottom:6px;">Novo endereço</h3>
+
+        <label for="label">Identificação</label>
+        <input type="text" id="label" placeholder="Ex: Casa, Trabalho" required>
+
+        <label for="zipCode">CEP</label>
+        <input type="text" id="zipCode" placeholder="00000000" maxlength="8" required>
+        <span class="cep-feedback" id="cepFeedback"></span>
+
+        <label for="street">Rua</label>
+        <input type="text" id="street" placeholder="Preenchido automaticamente pelo CEP" required>
+
+        <div class="payment-row">
+          <div>
+            <label for="number">Número</label>
+            <input type="text" id="number" placeholder="123" required>
+          </div>
+          <div>
+            <label for="complement">Complemento</label>
+            <input type="text" id="complement" placeholder="Apto, bloco (opcional)">
+          </div>
+        </div>
+
+        <label for="neighborhood">Bairro</label>
+        <input type="text" id="neighborhood" placeholder="Preenchido automaticamente pelo CEP" required>
+
+        <div class="payment-row">
+          <div>
+            <label for="city">Cidade</label>
+            <input type="text" id="city" placeholder="Preenchido automaticamente pelo CEP" required>
+          </div>
+          <div>
+            <label for="state">UF</label>
+            <input type="text" id="state" placeholder="SP" maxlength="2" required>
+          </div>
+        </div>
+
+        <p class="payment-error" id="addressError"></p>
+        <button type="submit" class="btn btn-cherry" style="margin-top:14px;">Salvar endereço</button>
+      </form>
+
+      <div class="phone-field">
+        <label for="contactPhone">Telefone de contato para este pedido</label>
+        <input type="tel" id="contactPhone" placeholder="11987654321" maxlength="11">
+      </div>
+
+      <p class="payment-error" id="entregaError"></p>
+      <button type="button" class="btn btn-cherry payment-submit" id="continueBtn">Continuar para pagamento</button>
+    </section>
+
+    <aside class="payment-summary-col">
+      <h2>Resumo do pedido</h2>
+      <div id="summaryItems" class="summary-items"></div>
+      <div class="summary-total">
+        <span>Total</span>
+        <strong id="summaryTotal">R$ 0,00</strong>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<script src="{{ url_for('static', filename='js/toast.js') }}"></script>
+<script src="{{ url_for('static', filename='js/security.js') }}"></script>
+<script src="{{ url_for('static', filename='js/cep.js') }}"></script>
+<script src="{{ url_for('static', filename='js/entrega.js') }}"></script>
+</body>
+</html>

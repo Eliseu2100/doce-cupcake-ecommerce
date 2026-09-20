@@ -1,0 +1,35 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+#
+# Ao conectar este repositório no Render, ele detecta este arquivo
+# automaticamente e já sugere o serviço configurado (build, start e
+# variáveis de ambiente), sem precisar digitar nada manualmente.
+#
+# IMPORTANTE sobre o disco:
+# O bloco "disk" abaixo cria um disco persistente para o arquivo
+# database/cupcake.db sobreviver a reinícios do serviço. Discos
+# persistentes só estão disponíveis nos planos PAGOS do Render.
+# No plano gratuito, remova o bloco "disk" (ou apenas ignore o aviso
+# que o Render mostrar) — a aplicação funciona normalmente, só que o
+# banco volta ao estado inicial (com o cardápio de demonstração) toda
+# vez que o serviço reinicia por inatividade.
+
+services:
+  - type: web
+    name: doce-cupcake
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: APP_ENCRYPTION_KEY
+        generateValue: true
+      - key: GA_MEASUREMENT_ID
+        value: ""
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+    disk:
+      name: doce-cupcake-data
+      mountPath: /opt/render/project/src/database
+      sizeGB: 1

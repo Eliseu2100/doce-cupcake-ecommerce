@@ -1,0 +1,13 @@
+{
+  "name": "Doce Cupcake",
+  "short_name": "Doce Cupcake",
+  "description": "Ateliê de doces artesanais — cupcakes, bolos, tortas e sorvetes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF6EA",
+  "theme_color": "#D6336C",
+  "icons": [
+    { "src": "/static/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/static/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

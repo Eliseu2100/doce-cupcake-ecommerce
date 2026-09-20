@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include "partials/seo_head.html" %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body class="auth-body">
+
+<div class="auth-screen">
+  <div class="auth-art">
+    <a href="{{ url_for('main.home') }}" class="brand auth-brand">
+      <svg viewBox="0 0 64 64" fill="none">
+        <path d="M14 30 L50 30 L45 56 Q44 60 40 60 L24 60 Q20 60 19 56 Z" fill="#F4B740"/>
+        <path d="M12 30 C12 18 20 10 32 10 C44 10 52 18 52 30 C52 34 48 36 44 33 C40 30 38 24 32 24 C26 24 24 30 20 33 C16 36 12 34 12 30 Z" fill="#D6336C"/>
+        <circle cx="32" cy="14" r="4.5" fill="#9C1F52"/>
+      </svg>
+      Doce Cupcake
+    </a>
+    <div class="auth-art-copy">
+      <h1>Aconteceu com<br>todo mundo.</h1>
+      <p>Informe seu e-mail e a gente ajuda você a voltar pra sua conta.</p>
+    </div>
+    <svg class="auth-cupcake" viewBox="0 0 300 320" fill="none">
+      <path d="M70 150 L230 150 L212 290 Q209 306 193 306 L107 306 Q91 306 88 290 Z" fill="#FBEBD3"/>
+      <path d="M60 150 C40 110 60 70 100 55 C120 47 130 30 150 30 C170 30 180 47 200 55 C240 70 260 110 240 150 C230 168 210 172 195 156 C182 142 170 118 150 118 C130 118 118 142 105 156 C90 172 70 168 60 150 Z" fill="#fff" opacity="0.9"/>
+      <circle cx="150" cy="42" r="13" fill="#fff" opacity="0.9"/>
+    </svg>
+  </div>
+
+  <div class="auth-form-wrap">
+    <form id="forgotForm" class="auth-form" novalidate>
+      <h2>Recuperar senha</h2>
+      <p class="auth-subtitle">Lembrou a senha? <a href="{{ url_for('main.login_page') }}">Entrar</a></p>
+
+      <label for="email">E-mail cadastrado</label>
+      <input type="email" id="email" name="email" placeholder="voce@email.com" required autocomplete="email">
+
+      <p class="auth-error" id="authError"></p>
+
+      <button type="submit" class="btn btn-cherry auth-submit">Enviar link de recuperação</button>
+    </form>
+
+    <div id="resetLinkBox" class="reset-link-box" hidden>
+      <p><strong>⚠️ Projeto acadêmico sem envio de e-mail configurado.</strong></p>
+      <p>Num sistema real, este link chegaria só no seu e-mail. Aqui, por não termos um servidor de e-mail, mostramos ele direto na tela:</p>
+      <a id="resetLinkAnchor" class="reset-link" href="#"></a>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/toast.js') }}"></script>
+<script src="{{ url_for('static', filename='js/security.js') }}"></script>
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</body>
+</html>
